@@ -13,8 +13,36 @@
             <!-- <button class="bg-indigo-500 px-3 rounded-lg" type="submit">Search</button> -->
         </form>
 
-        <p>create</p>
+        <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]" type="submit"><a href="{{ route('create') }}">create</a></button>
+    </div>
 
+    <div>
+        <h1 class="text-center text-4xl"> Opportunities</h1>
+        <div class="flex gap-5">
+            @foreach($opportunities as $opportunity)
+            <div class="card" style="width: 18rem;">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <p>{{ $opportunity['title'] }}</p>
+                    </h5>
+                    <p class="card-text">{{ $opportunity['description'] }}</p>
+                    <!-- <a href="#" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">published</a> -->
+
+                </div>
+                <p>created at {{ $opportunity['created_at'] }} by '{{$opportunity['company']}}'</p>
+                <div class="flex gap-10">
+                    <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full"><a href="publish"></a>publish</button>
+                    <!-- <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">Delete</button> -->
+<!--  -->
+                    <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">edit</button>
+                </div>
+
+
+            </div>
+
+        </div>
+        @endforeach
     </div>
 </div>
 

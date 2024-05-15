@@ -188,6 +188,31 @@
                     });
                 });
             });
+
+
+            function triggerClick() {
+                document.querySelector("#uploadImage").click();
+            }
+
+            //todisplay images
+
+            function displayImage(e) {
+                if (e.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        document.querySelector("#profileDislay").setAttribute('src', e.target.result);
+                    }
+                    reader.readAsDataURL(e.files[0]);
+                }
+            }
+
+            // $('form[method="DELETE"]').submit(function(e) {
+            //     var confirmation = confirm("Are you sure you want to delete this item?");
+            //     if (!confirmation) {
+            //         e.preventDefault();
+            //     }
+            // });
         </script>
 </body>
 

@@ -31,11 +31,11 @@
                         @enderror
 
 
-                        <label>Company Name</label>
+                        <!-- <label>Company Name</label>
                         <input class="w-full border-2 p-2 rounded-md border-indigo-300" type="text" placeholder="Enter title" name="company">
                         @error('company')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                        @enderror
+                        @enderror -->
                         <div class=" gap-5 items-center justify-between" id="category">
                             <label>Who is thisnfor??</label>
                             <select name="category">
