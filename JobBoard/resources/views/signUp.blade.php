@@ -11,7 +11,7 @@
 <body class="flex w-full h-full box-border">
     <main class="h-full w-full m-20 p-10 flex-col  text-center justify-center items-center gap-10 drop-shadow-xl bg-indigo-100">
         <div class="w-full">
-            <h1>Sign Up to <span>Job Board</span></h1>
+            <h1>Sign Up to <span>opportunity Board</span></h1>
             <div class="flex justify-center items-center">
                 <form method="POST" action="/users">
                     @csrf 

@@ -6,9 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-<h1>welcome to the student details page</h1>
-<p>name {{$opportunityId}}</p>
-<p>{{$opportunity['title']}}</p>
+<h1>welcome to the details page</h1>
+<p>names {{$opportunity->title}} </p>
+<p>desc {{$opportunity->description}} </p>
+
+<!--  -->
+<!-- <a href="#" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">apply</a> -->
+
+<a href="{{route('apply', ['applyId' => $opportunity['id']]) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Apply</a>
+
 
 
 </body>

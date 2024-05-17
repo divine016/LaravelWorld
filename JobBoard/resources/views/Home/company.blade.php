@@ -23,6 +23,7 @@
             <div class="card" style="width: 18rem;">
                 <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
+                    <img src="{{ $opportunity['photo'] }}" alt="image here" height="200" width="200" />
                     <h5 class="card-title">
                         <p>{{ $opportunity['title'] }}</p>
                     </h5>
@@ -30,12 +31,28 @@
                     <!-- <a href="#" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">published</a> -->
 
                 </div>
-                <p>created at {{ $opportunity['created_at'] }} by '{{$opportunity['company']}}'</p>
+                <p>created at {{ $opportunity['created_at'] }} by '{{$opportunity['created_by']}}'</p>
                 <div class="flex gap-10">
-                    <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full"><a href="publish"></a>publish</button>
-                    <!-- <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">Delete</button> -->
-<!--  -->
-                    <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">edit</button>
+                    <form action="{{ route('publish', ['id' => $opportunity['id']]) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
+                            publish</button>
+                    </form>
+
+                    <form method="POST" action="/delete/{{$opportunity->id}}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
+                            <!-- <i class="fa-solid fa-trash"></i>  -->
+                            Delete</button>
+                    </form>
+                    <!--  -->
+                    <!-- <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
+                        <a href="{{route('editOpportunity', ['opportunity' => $opportunity['id']]) }}">Edit</a>
+                    </button> -->
+                    <!-- <button><a href="viewApplicants"></a>view applicants</button> -->
+                 
+                   
                 </div>
 
 

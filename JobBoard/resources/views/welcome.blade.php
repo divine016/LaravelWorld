@@ -16,18 +16,29 @@
     <h1 class="text-center text-4xl"> Opportunities</h1>
     <div class="flex gap-5">
         @foreach($opportunities as $opportunity)
+       
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            
             <div class="card-body">
+                <div>
+                   
+                <img src="{{ $opportunity['photo'] }}" alt="image here" height="200" width="200" />
+                <div>
                 <h5 class="card-title">
                     <p>{{ $opportunity['title'] }}</p>
                 </h5>
+
                 <p class="card-text">{{ $opportunity['description'] }}</p>
-                <a href="#" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Apply</a>
-                <a href="{{ route('opportunityDetail', ['id' => $opportunity['id']] ) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Details</a>
+                </div>
+                </div>
+               
+                
+                
+                <a href="{{route('apply', ['applyId' => $opportunity['id']]) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Apply</a>
+                <a href="{{ route('opportunityDetail', ['opportunity' => $opportunity['id']] ) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Details</a>
 
             </div>
-            <p>published {{ $opportunity['publised_at'] }} by '{{$opportunity['company']}}'</p>
+            <p>published at {{ $opportunity['published_at'] }} by '{{$opportunity['created_by']}}'</p>
         </div>
 
     </div>

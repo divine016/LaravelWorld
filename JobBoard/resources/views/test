@@ -1,0 +1,3 @@
+  <!-- <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
+                        <a href="{{route('view', ['id' => $applicant['id']]) }}">view applicants</a>
+                    </button> -->

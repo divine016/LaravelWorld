@@ -11,14 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('opportunities', function (Blueprint $table) {
+        Schema::create('_application', function (Blueprint $table) {
             $table->id();
-            $table->string("title", "100");
-            $table->string("description", "300");
-            $table->string("category", "25");
-            $table->string("created_by");
-            $table->dateTime("published_at", 0)->nullable();
-            $table->string("photo", 300);
+            $table->string('name' );
+            $table->string('purpose' );
+            $table->string('link' );
+            $table->string('email' );
+
+            $table->string('phone' );
+
+            $table->string('opportunity_id');
+            $table->string('creator_id');
+
+
+
             $table->timestamps();
         });
     }
@@ -28,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('opportunities');
+        Schema::dropIfExists('_application');
     }
 };
