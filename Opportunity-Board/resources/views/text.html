@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup Page</title>
+        <style>
+            /* Optional styles for hiding/showing elements */
+            .category-select {
+                display: none;
+                /* Initially hide the category selection */
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Signup</h1>
+        <form id="signup-form">
+            <label>User Type:</label>
+            <div>
+                <input type="radio" id="user-type-student" name="user_type" value="student" required>
+                <label for="user-type-student">Student</label>
+                <input type="radio" id="user-type-other" name="user_type" value="other" required>
+                <label for="user-type-other">Other</label>
+            </div>
+
+            <label class="category-select" for="category">Category (for Students only):</label>
+            <select id="category" name="category" class="category-select" required>
+                <option value="">-- Select Category --</option>
+                <option value="freshman">Freshman</option>
+                <option value="sophomore">Sophomore</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        </form>
+
+        <script>
+            const studentRadio = document.getElementById('user-type-student');
+            const categorySelect = document.getElementById('category');
+
+            studentRadio.addEventListener('change', function () {
+                if (this.checked) {
+                    categorySelect.classList.remove('category-select'); // Show the category selection
+                } else {
+                    categorySelect.classList.add('category-select'); // Hide the category selection
+                    categorySelect.value = ''; // Reset the category value (optional)
+                }
+            });
+        </script>
+    </body>
+
+    </html>
+
+</body>
+
+</html>
