@@ -13,17 +13,15 @@ return new class extends Migration
     {
         Schema::create('_application', function (Blueprint $table) {
             $table->id();
-            $table->string('name' );
-            $table->string('purpose' );
-            $table->string('link' );
-            $table->string('email' );
+            $table->string('name');
+            $table->string('purpose');
+            $table->string('link');
+            $table->string('email');
 
-            $table->string('phone' );
+            $table->string('phone');
 
             $table->string('opportunity_id');
             $table->string('creator_id');
-
-
 
             $table->timestamps();
         });
