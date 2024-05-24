@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('opportunities', function (Blueprint $table) {
             $table->id();
-            $table->string("title", "100");
-            $table->string("description", "300");
-            $table->string("category", "25");
-            $table->string("created_by");
-            $table->dateTime("published_at", 0)->nullable();
-            $table->string("photo", 300);
+            $table->string('title', '100');
+            $table->string('description', '300');
+            $table->string('category', '25');
+            $table->string('created_by');
+            $table->dateTime('published_at', 0)->nullable();
+            $table->string('photo', 300);
             $table->timestamps();
         });
     }
