@@ -74,6 +74,6 @@ class ApplicationController extends Controller
             }
         }
 
-        return redirect()->route(auth()->user() ? 'individual' : 'welcome')->with('Applied for opportunity  successfully');
+        return redirect()->route(auth()->user() ? 'pages.individual' : 'pages.welcome')->with('Applied for opportunity  successfully');
     }
 }

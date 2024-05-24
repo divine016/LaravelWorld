@@ -67,7 +67,7 @@
                             Update Opportunity
                         </button>
 
-                        <a href="{{route('company')}}" class="text-black ml-4"> Back </a>
+                        <a href="{{route('pages.company')}}" class="text-black ml-4"> Back </a>
                     </div>
 
                 </form>

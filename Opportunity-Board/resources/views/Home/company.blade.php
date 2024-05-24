@@ -13,7 +13,7 @@
             <!-- <button class="bg-indigo-500 px-3 rounded-lg" type="submit">Search</button> -->
         </form>
 
-        <a href="{{ route('create') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  type="submit">create</button></a>
+        <a href="{{ route('pages.create') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  type="submit">create</button></a>
     </div>
 
     <div>

@@ -8,31 +8,26 @@ use App\Http\Controllers\PagesController;
 use App\Models\Opportunity;
 use Illuminate\Support\Facades\Route;
 
-//landing page route
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// the hhome page for the company or the individual
-Route::get('company', [PagesController::class, 'company'])->name('company');
+// the home page for the company or the individual
+
+Route::controller (PagesController::class)
+        ->name('pages.')
+        ->group(function () {
+            Route::get('company', 'company')->name('company');
+            Route::get('individual', 'individual')->name('individual');
+            Route::get('/', 'welcome')->name('welcome');
+            Route::get('signUp', 'showSignUpPage')->name('signUp');
+            Route::get('signIn', 'showSignInPage')->name('signIn');
+            Route::get('create', 'showCreatePage')->name('create');
+        });
+
+// Route::get('company', [PagesController::class, 'company'])->name('company');
 Route::post('company/{id}', [OpportunitiesController::class, 'publish'])->name('publish');
 
-// ->middleware('CheckCategory:company');
-Route::get('individual', [PagesController::class, 'individual'])->name('individual');
 
-//
-// ->middleware('CheckCategory:individual');
-
-Route::get('/', [PagesController::class, 'welcome'])->name('welcome');
-
-//signin/ signup route
-
-Route::get('signUp', [PagesController::class, 'showSignUpPage'])->name('signUp');
-
-Route::get('signIn', [PagesController::class, 'showSignInPage'])->name('signIn');
 Route::post('/users/authenticate', [PagesController::class, 'authenticate']);
 
-Route::get('create', [PagesController::class, 'showCreatePage'])->name('create');
 
 //creating a new user
 Route::post('/users', [PagesController::class, 'storeUser']);

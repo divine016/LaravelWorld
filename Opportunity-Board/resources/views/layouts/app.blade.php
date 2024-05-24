@@ -16,7 +16,7 @@
         <header class="absolute inset-x-0 top-0 z-50 border-b group">
             <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex lg:flex-1">
-                    <a href="/" class="-m-1.5 p-1.5">
+                    <a href="{{ route('pages.welcome') }}" class="-m-1.5 p-1.5">
                         opportunity Board
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="hidden lg:flex lg:gap-x-12">
                     <!-- <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Product</a>
                     <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Features</a> -->
-                    <a href="{{ route('signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
+                    <a href="{{ route('pages.signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
                     <a href="{{ route('signIn') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign In</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-1">
@@ -90,7 +90,7 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-            <<a href="{{ route('signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
+            <<a href="{{ route('pages.signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
             <a href="{{ route('signIn') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign In</a>
     </div>
     <div class="py-6">
@@ -130,8 +130,8 @@
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6">
-                        <a href="{{ route('signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
-                        <a href="{{ route('signIn') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign In</a>
+                        <a href="{{ route('pages.signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
+                        <a href="{{ route('pages.signIn') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign In</a>
                     </div>
                     <!-- <div class="py-6">
                                 <form method="POST" action="/logout" class="inline-block">

@@ -7,8 +7,8 @@
 </head>
 <body>
     <p>hii you have a new opportunity waiting for you</p>
-    <button> <a href="{{ route('cpmpany') }}">click here to access it</a></button>
+    <button> <a href="{{ route('pages.individual') }}">click here to access it</a></button>
 
-    <p>thank youuu?</p>
+    <p>thank youuu</p>
 </body>
 </html>

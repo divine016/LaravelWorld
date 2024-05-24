@@ -40,7 +40,7 @@
 
 
 
-            <p>dont yet have an account? <a href="{{ route('signUp') }}">SignUp</a></p>
+            <p>dont yet have an account? <a href="{{ route('pages.signUp') }}">SignUp</a></p>
         </div>
 
     </main>

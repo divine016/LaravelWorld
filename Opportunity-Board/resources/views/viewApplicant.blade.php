@@ -12,6 +12,6 @@
     <p>name{{$application->email}}</p>
     <p>name{{$application->phone}}</p>
 
-    <a href="{{route('company')}}"><button>Back</button></a>
+    <a href="{{route('pages.company')}}"><button>Back</button></a>
 </body>
 </html>

@@ -79,7 +79,7 @@
 
 
 
-            <p>already have an account? <a href="{{ route('signIn') }}">SignIn</a></p>
+            <p>already have an account? <a href="{{ route('pages.signIn') }}">SignIn</a></p>
         </div>
 
     </main>

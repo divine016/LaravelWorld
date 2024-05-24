@@ -8,7 +8,7 @@
 <body>
     <p>sombody applid for your opportunity</p>
 
-    <button> <a href="{{ route('cpmpany') }}">click here to see it</a></button>
+    <button> <a href="{{ route('pages.company') }}">click here to see it</a></button>
 
     <p>thank youuu?</p>
 </body>

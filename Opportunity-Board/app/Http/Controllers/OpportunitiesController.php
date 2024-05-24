@@ -41,7 +41,7 @@ class OpportunitiesController extends Controller
         $opp->photo = $data['photo'];
         $opp->save();
 
-        return redirect()->route('company')->with('success opportunity create successfully');
+        return redirect()->route('pages.company')->with('success opportunity create successfully');
     }
 
     /**
@@ -72,7 +72,7 @@ class OpportunitiesController extends Controller
             }
         }
 
-        return redirect()->route('company')->with('success opportunity published successfully');
+        return redirect()->route('pages.company')->with('success opportunity published successfully');
     }
 
     /**
@@ -133,6 +133,6 @@ class OpportunitiesController extends Controller
 
         $opportunity->delete();
 
-        return redirect('company')->with('message', 'opportunity deleted successfully');
+        return redirect()->route('pages.company')->with('message', 'opportunity deleted successfully');
     }
 }

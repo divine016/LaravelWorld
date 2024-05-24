@@ -6,8 +6,8 @@
     <h1 class="text-7xl ">welcome to <span class="text-indigo-500 font-semibold">Opportunity board </span></h1>
     <p>World class <span class="text-indigo-500">opportunities</span> at your door step.</p>
     <div class="flex my-20 gap-20 mx-20 justify-around items-center ">
-        <button class="bg-indigo-300 border-none hover:border-2 hover:bg-indigo-400 rounded-lg p-3 hover:rounded-full w-[30%]" type="submit"><a href="{{ route('signUp') }}">Sign Up</a></button>
-        <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]" type="submit"><a href="{{ route('signIn') }}">Sign In</a></button>
+        <button class="bg-indigo-300 border-none hover:border-2 hover:bg-indigo-400 rounded-lg p-3 hover:rounded-full w-[30%]" type="submit"><a href="{{ route('pages.signUp') }}">Sign Up</a></button>
+        <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]" type="submit"><a href="{{ route('pages.signIn') }}">Sign In</a></button>
     </div>
 
 </div>

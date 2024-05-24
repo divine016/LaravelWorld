@@ -32,8 +32,8 @@
                 <div class="hidden lg:flex lg:gap-x-12">
                     <!-- <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Product</a>
                     <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Features</a> -->
-                    <a href="/" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
-                    <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
+                    <a href="{{ route('pages.welcome') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
+                                <a href="{{ route('pages.create') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-1">
                     {{-- showing the profile if user is logged in --}}
@@ -89,11 +89,11 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-            <a href="/" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
-                    <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
-            </div>
-            <div class="py-6">
-                <form method="POST" action="/logout" class="inline-block">
+            <a href="{{ route('pages.welcome') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
+            <a href="{{ route('pages.create') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
+    </div>
+    <div class="py-6">
+        <form method="POST" action="/logout" class="inline-block">
             @csrf
             <button type="submit" class="flex text-sm gap-2 capitalize font-medium leading-6 text-gray-950 ring-0 active:bg-transparent focus:bg-transparent">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-indigo-700">
@@ -101,119 +101,119 @@
                 </svg>
                 Sign Out
             </button>
-            </form>
+        </form>
     </div>
     </div>
     </div>
     </div>
     </div> --}}
 
-            <!-- Mobile menu, show/hide based on menu open state. -->
-            <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
-                <!-- Background backdrop, show/hide based on slide-over state. -->
-                <div class="fixed inset-0 z-50"></div>
-                <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div class="flex items-center justify-between">
-                        <a href="#" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Your Company</span>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-50"></div>
+        <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div class="flex items-center justify-between">
+                <a href="#" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Your Company</span>
 
-                        </a>
-                        <button id="mobile-menu-close-button" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                            <span class="sr-only">Close menu</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+                </a>
+                <button id="mobile-menu-close-button" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
 
+            </div>
+            <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                    <div class="space-y-2 py-6">
+                        <a href="{{ route('pages.welcome') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
+                        <a href="{{ route('pages.create') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
                     </div>
-                    <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
-                            <div class="space-y-2 py-6">
-                                <a href="/" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
-                                <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
-                            </div>
-                            <div class="py-6">
-                                <form method="POST" action="/logout" class="inline-block">
-                                    @csrf
-                                    <button type="submit" class="flex text-sm gap-2 capitalize font-medium leading-6 text-gray-950 ring-0 active:bg-transparent focus:bg-transparent">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-indigo-700">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
-                                        </svg>
-                                        sign Out
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="py-6">
+                        <form method="POST" action="/logout" class="inline-block">
+                            @csrf
+                            <button type="submit" class="flex text-sm gap-2 capitalize font-medium leading-6 text-gray-950 ring-0 active:bg-transparent focus:bg-transparent">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-indigo-700">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                                </svg>
+                                sign Out
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Button to open the mobile menu -->
-            <div class="hidden">
-                <button id="mobile-menu-open-button" type="button" class=" -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 lg:hidden">
-                    <span class="sr-only">Open mobile menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path>
-                    </svg>
-                </button>
-            </div>
-        </header>
+    <!-- Button to open the mobile menu -->
+    <div class="hidden">
+        <button id="mobile-menu-open-button" type="button" class=" -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 lg:hidden">
+            <span class="sr-only">Open mobile menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </button>
+    </div>
+    </header>
 
-        <main class="flex justify-center items-center flex-col mt-40">
-            @yield('content')
-        </main>
+    <main class="flex justify-center items-center flex-col mt-40">
+        @yield('content')
+    </main>
 
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const mobileMenu = document.querySelector('#mobile-menu');
-                const mobileMenuCloseButton = document.querySelector('#mobile-menu-close-button');
-                const mobileMenuOpenButton = document.querySelector('#mobile-menu-open-button');
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const mobileMenu = document.querySelector('#mobile-menu');
+            const mobileMenuCloseButton = document.querySelector('#mobile-menu-close-button');
+            const mobileMenuOpenButton = document.querySelector('#mobile-menu-open-button');
 
-                // Show mobile menu when hamburger button is clicked
-                mobileMenuOpenButton.addEventListener('click', () => {
-                    mobileMenu.classList.remove('hidden');
-                });
-
-                // Hide mobile menu when close button is clicked
-                mobileMenuCloseButton.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-
-                // Hide mobile menu when a link is clicked
-                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach((link) => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
+            // Show mobile menu when hamburger button is clicked
+            mobileMenuOpenButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
             });
 
+            // Hide mobile menu when close button is clicked
+            mobileMenuCloseButton.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
 
-            function triggerClick() {
-                document.querySelector("#uploadImage").click();
-            }
+            // Hide mobile menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
 
-            //todisplay images
 
-            function displayImage(e) {
-                if (e.files[0]) {
-                    var reader = new FileReader();
+        function triggerClick() {
+            document.querySelector("#uploadImage").click();
+        }
 
-                    reader.onload = function(e) {
-                        document.querySelector("#profileDislay").setAttribute('src', e.target.result);
-                    }
-                    reader.readAsDataURL(e.files[0]);
+        //todisplay images
+
+        function displayImage(e) {
+            if (e.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    document.querySelector("#profileDislay").setAttribute('src', e.target.result);
                 }
+                reader.readAsDataURL(e.files[0]);
             }
+        }
 
-            // $('form[method="DELETE"]').submit(function(e) {
-            //     var confirmation = confirm("Are you sure you want to delete this item?");
-            //     if (!confirmation) {
-            //         e.preventDefault();
-            //     }
-            // });
-        </script>
+        // $('form[method="DELETE"]').submit(function(e) {
+        //     var confirmation = confirm("Are you sure you want to delete this item?");
+        //     if (!confirmation) {
+        //         e.preventDefault();
+        //     }
+        // });
+    </script>
 </body>
 
 </html>

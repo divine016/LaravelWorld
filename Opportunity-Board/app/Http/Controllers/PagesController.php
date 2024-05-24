@@ -85,7 +85,7 @@ class PagesController extends Controller
             auth()->login($user);
 
             //redirect to a specific dashbord user
-            return redirect()->route('company')->with('welcome to your company dashboard');
+            return redirect()->route('pages.company')->with('welcome to your company dashboard');
         } else {
             $formFields['category'] = $request->category;
             $user = User::create($formFields);
@@ -94,7 +94,7 @@ class PagesController extends Controller
             auth()->login($user);
 
             //redirect to a specific dashbord user
-            return redirect()->route('individual')->with('welcome to your individual dashboard');
+            return redirect()->route('pages.individual')->with('welcome to your individual dashboard');
         }
 
         return 'we could not log you in. veryfy credentials and try again';
@@ -121,11 +121,11 @@ class PagesController extends Controller
             if ($user->user_type === 'company') {
                 $request->session()->regenerate();
 
-                return redirect()->route('company')->with('welcome to your company dashboard');
+                return redirect()->route('pages.company')->with('welcome to your company dashboard');
             } else {
                 $request->session()->regenerate();
 
-                return redirect()->route('individual')->with('welcome to your individual dashboard');
+                return redirect()->route('pages.individual')->with('welcome to your individual dashboard');
             }
         }
 
@@ -146,7 +146,7 @@ class PagesController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerate();
 
-        return redirect()->route('welcome')->with('message', 'you have logged out successfully');
+        return redirect()->route('pages.welcome')->with('message', 'you have logged out successfully');
     }
 
     /**
@@ -154,7 +154,7 @@ class PagesController extends Controller
      *
      * returns a redirectResponse
      */
-    public function company(): RedirectResponse
+    public function company(): View | RedirectResponse
     {
         $user = auth()->user();
         if ($user) {
@@ -167,7 +167,7 @@ class PagesController extends Controller
             ]);
         } else {
             // The user is not logged in, handle the case accordingly (e.g., redirect to login)
-            return redirect()->route('signIn');
+            return redirect()->route('pages.signIn');
         }
     }
 
@@ -176,7 +176,7 @@ class PagesController extends Controller
      *
      * returns a redirectResponse
      */
-    public function individual(): RedirectResponse
+    public function individual(): RedirectResponse | View
     {
         $user = auth()->user();
         if ($user) {
@@ -185,7 +185,7 @@ class PagesController extends Controller
 
             return view('Home.individual', compact('opportunities'));
         } else {
-            return redirect()->route('signIn');
+            return redirect()->route('pages.signIn');
         }
     }
 }
