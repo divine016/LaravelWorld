@@ -2,79 +2,78 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
 use App\Models\Opportunity;
-
+use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-
 class PagesController extends Controller
 {
-    public function welcome()
+    /**
+     * Selects all opportunities that are published
+     * Returns a view of the welcome page
+     */
+    public function welcome(): View
     {
-        // $opportunities = [];
-        // $opportunities = Opportunity::all();
-
         $opportunities = Opportunity::whereNotNull('published_at')->get();
 
-        // dd($opportunities);
         return view('welcome', compact('opportunities'));
     }
 
-    //signup page
-    public function showSignUpPage()
+    /**
+     * returns the sign up form
+     */
+    public function showSignUpPage(): View
     {
         return view('signUp');
     }
 
-    //sign in page
-    public function showSignInPage()
+    /**
+     * returns the sign in form
+     */
+    public function showSignInPage(): View
     {
         return view('signIn');
     }
 
-    //create page
-    public function showCreatePage()
+    /**
+     * returns the form to create a new opportunity by the company
+     */
+    public function showCreatePage(): View
     {
         return view('create');
     }
 
-    //show oppportunity details
-    public function showDetails(Opportunity $opportunity)
+    /**
+     * show details of an opportunity
+     *
+     * @param  object  $opportunity
+     */
+    public function showDetails(Opportunity $opportunity): View
     {
         return view('details', ['opportunity' => $opportunity]);
     }
-    
 
-   public function viewApplicant(Application $applicant){
-    return view('viewApplicant', ['id' => $applicant]);
-   }
-
-    //edit the opportunity
-
-    // public function editOpps(Opportunity $opportunity)
-    // {
-    //     return view('edit', ['opportunity' => $opportunity]);
-    // }
-
-
-
-    //creating a new user
-    public function storeUser(Request $request)
+    /**
+     * Stores a new user information and logs the user in
+     *
+     * @param  object  $request
+     *
+     * returns a redirectResponse
+     */
+    public function storeUser(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'phone' => ['required', 'string'],
+            'phone' => ['required', 'interger'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'user_type' => ['required'],
         ]);
 
         //hash password
-
 
         $formFields['password'] = bcrypt($formFields['password']);
 
@@ -86,7 +85,7 @@ class PagesController extends Controller
             auth()->login($user);
 
             //redirect to a specific dashbord user
-            return redirect('company')->with('welcome to your company dashboard');
+            return redirect()->route('company')->with('welcome to your company dashboard');
         } else {
             $formFields['category'] = $request->category;
             $user = User::create($formFields);
@@ -95,18 +94,20 @@ class PagesController extends Controller
             auth()->login($user);
 
             //redirect to a specific dashbord user
-            return redirect('individual')->with('welcome to your individual dashboard');
+            return redirect()->route('individual')->with('welcome to your individual dashboard');
         }
-        // $user = User::create($formFields);
-
-
-
 
         return 'we could not log you in. veryfy credentials and try again';
     }
 
-    //authenticate user (login)
-    public function authenticate(Request $request)
+    /**
+     * Logging in an existing user to the webApp
+     *
+     * @param  object  $request
+     *
+     * returns a redirectResponse
+     */
+    public function authenticate(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'email' => ['required', 'email'],
@@ -115,60 +116,76 @@ class PagesController extends Controller
 
         if (auth()->attempt($formFields)) {
 
-
             $user = auth()->user();
 
             if ($user->user_type === 'company') {
                 $request->session()->regenerate();
-                return redirect('company')->with('welcome to your company dashboard');
+
+                return redirect()->route('company')->with('welcome to your company dashboard');
             } else {
                 $request->session()->regenerate();
-                return redirect('individual')->with('welcome to your individual dashboard');
+
+                return redirect()->route('individual')->with('welcome to your individual dashboard');
             }
         }
 
         return back()->withErrors(['email' => 'invalid Credentials'])->onlyInput('email');
     }
 
-    //logout
-    public function logout(Request $request)
+    /**
+     * Logging out an existing user to the webApp
+     *
+     * @param  object  $request
+     *
+     * returns a redirectResponse
+     */
+    public function logout(Request $request): RedirectResponse
     {
         auth()->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerate();
 
-
-        return redirect('/')->with('message', 'you have logged out successfully');
+        return redirect()->route('welcome')->with('message', 'you have logged out successfully');
     }
 
-    public function company()
+    /**
+     * Takes an user to the company page if they are signed in
+     *
+     * returns a redirectResponse
+     */
+    public function company(): RedirectResponse
     {
-        $user = Auth::user();
+        $user = auth()->user();
         if ($user) {
             $currentUser = $user->name;
 
             $opportunities = Opportunity::where('created_by', $currentUser)->whereNull('Published_at')->get();
+
             return view('Home.company', [
                 'opportunities' => $opportunities,
             ]);
         } else {
             // The user is not logged in, handle the case accordingly (e.g., redirect to login)
-            return redirect('signIn');
+            return redirect()->route('signIn');
         }
     }
 
-    public function individual()
+    /**
+     * Takes an user to the individual page if they are signed in
+     *
+     * returns a redirectResponse
+     */
+    public function individual(): RedirectResponse
     {
-        $user = Auth::user();
-        if($user){
+        $user = auth()->user();
+        if ($user) {
             $currentUserCategory = $user->category;
-        $opportunities = Opportunity::where('category', $currentUserCategory)->whereNotNull('published_at')->get();
-        return view('Home.individual', compact('opportunities'));
-        } else{
-            return redirect('signIn');
+            $opportunities = Opportunity::where('category', $currentUserCategory)->whereNotNull('published_at')->get();
+
+            return view('Home.individual', compact('opportunities'));
+        } else {
+            return redirect()->route('signIn');
         }
-        
-        
     }
 }

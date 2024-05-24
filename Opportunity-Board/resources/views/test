@@ -1,3 +1,30 @@
   <!-- <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
                         <a href="{{route('view', ['id' => $applicant['id']]) }}">view applicants</a>
-                    </button> -->
+  </button> -->
+
+  <!-- <button> <a href="http://127.0.0.1:8000">click here to access it</a></button> -->
+
+
+   /**
+     * returns the sign up form
+     */
+
+    public function viewApplicant(Application $applicant) : View
+    {
+        return view('viewApplicant', ['id' => $applicant]);
+    }
+
+
+    //edit the opportunity
+
+    // public function editOpps(Opportunity $opportunity)
+    // {
+    //     return view('edit', ['opportunity' => $opportunity]);
+    // }
+
+
+    //viewing all opportunities for a company
+
+    public function viewAllOpportunities()
+    {
+    }

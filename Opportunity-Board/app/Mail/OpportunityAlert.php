@@ -40,7 +40,7 @@ class OpportunityAlert extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            markdown: 'mails.new_opp_email',
+            markdown: 'mails.new-opp-email',
         );
     }
 

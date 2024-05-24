@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 class ApplicationAlert extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-    
+
     public $mailData;
 
     /**
@@ -22,7 +22,6 @@ class ApplicationAlert extends Mailable implements ShouldQueue
     {
         $this->mailData = $mailData;
     }
-
 
     /**
      * Get the message envelope.
@@ -40,7 +39,7 @@ class ApplicationAlert extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            markdown: 'mails.apply_opp_mail',
+            markdown: 'mails.apply-opp-mail',
         );
     }
 
