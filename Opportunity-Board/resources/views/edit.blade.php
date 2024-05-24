@@ -7,9 +7,10 @@
             <h1 class="text-4xl m-2">Edit <span>opportunity</span></h1>
             <p>edit {{$opportunity->title}}</p>
             <div class="flex justify-center items-center">
-                <form method="POST" action="route('opportunities.updateOpportunity')" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('opportunities.updateOpportunity', [$opportunity->id])}}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    
                     <div class="flex items-start flex-col gap-5 capitalize ">
                         <div class="flex justify-center items-start flex-col gap-5">
                         <label for="image">click to upload image (jpeg, jpg, png)</label>
@@ -17,23 +18,22 @@
                         
                         <input type="file" 
                         accept="image/png, image/jpg, image/jpeg" 
-                        name="photo" value="uploadImage" 
+                        name="photo" 
+                        
+                        value="{{ $opportunity['photo'] }}"   
                         onchange="displayImage(this)" 
                         id="uploadImage" 
                         > 
                         </div>
                         
 
-                        <!--  <input type="file" 
-                        accept="image/png, image/jpg, image/jpeg" 
-                        name="image" value="uploadImage" 
-                        onchange="displayImage(this)" 
-                        id="uploadImage" 
-                        style="display: none;"> <br><br> -->
+                        
 
-                        @error('image')
+                        @error('photo')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
+
+
                         <label>title</label>
                         <input class="w-full border-2 p-2 rounded-md border-indigo-300" type="text" placeholder="Enter title" name="title" value="{{ $opportunity['title'] }}">
                         @error('title')
@@ -47,19 +47,18 @@
                         @enderror
 
 
-                        <!-- <label>Company Name</label>
-                        <input class="w-full border-2 p-2 rounded-md border-indigo-300" type="text" placeholder="Enter title" name="company">
-                        @error('company')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                        @enderror -->
                         <div class=" gap-5 items-center justify-between" id="category">
-                            <label>Who is thisnfor??</label>
+                            <label>Who is this for??</label>
                             <select name="category">
                                 <option value="">-- Select Category --</option>
                                 <option value="volunteer">Volunteer</option>
                                 <option value="internship">Internship</option>
                                 <option value="job">Job</option>
                             </select>
+
+                            @error('category')
+                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        @enderror
                         </div>
 
 

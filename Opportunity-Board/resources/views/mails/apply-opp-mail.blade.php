@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>sombody applid for your opportunity</p>
+    <p>somebody applied for your opportunity</p>
 
     <button> <a href="{{ route('pages.company') }}">click here to see it</a></button>
 

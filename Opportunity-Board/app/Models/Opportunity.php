@@ -13,4 +13,12 @@ class Opportunity extends Model
     use HasFactory;
 
     protected $table = 'opportunities';
+
+    protected $fillable = [
+        'title',
+        'description',
+        'photo',
+        'category',
+        'created_by',
+    ];
 }

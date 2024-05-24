@@ -31,7 +31,7 @@ class OpportunitiesController extends Controller
 
         $filename = $request->file('photo')->getClientOriginalName();
         $path = $request->file('photo')->storeAs('images', $filename, 'public');
-        $data['photo'] = config('app.url').'/storage/'.$path;
+        $data['photo'] = '/storage/'.$path;
 
         $opp = new Opportunity;
         $opp->title = $data['title'];
@@ -58,7 +58,6 @@ class OpportunitiesController extends Controller
         $opp->save();
 
         //sendign out the emails
-
         $individuals = User::all();
 
         foreach ($individuals as $individual) {
@@ -102,17 +101,30 @@ class OpportunitiesController extends Controller
         }
 
         $formFields = $request->validate([
-            'title' => 'required',
+            'title' => ['required'],
             'description' => ['required'],
-            'category' => 'required',
-            'photo' => 'required',
+            'category' => ['required'],
         ]);
+        $hasNewImage = $request->hasFile('photo'); // Check if a new image was uploaded
 
-        $opportunity->update($formFields);
+        if ($hasNewImage) {
+            $filename = $request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('images', $filename, 'public');
+            $formFields['photo'] = '/storage/'.$path;
+        } else {
+            // Use the existing image from the opportunity
+            $formFields['photo'] = $opportunity->photo;
+        }
 
-        dd($opportunity);
+        $opportunity->title = $formFields['title'];
+        $opportunity->description = $formFields['description'];
+        $opportunity->category = $formFields['category'];
+        $opportunity->photo = $formFields['photo'];
 
-        return back()->with('message', 'opportunity updated successfully!');
+        $opportunity->save();
+
+        return redirect()->route('pages.company')->with('message', 'opportunity updated successfully');
+
     }
 
     /**

@@ -31,7 +31,7 @@ Route::controller(OpportunitiesController::class)
 
         Route::post('create', 'createOpp')->name('create');
 
-        Route::get('/opportunity/{opportunity}/edit', 'edit')->name('editOpportunity');
+        Route::get('/edit/opportunity/{opportunity}', 'edit')->name('editOpportunity');
 
         Route::put('edit/{opportunity}', 'update')->name('updateOpportunity');
 
