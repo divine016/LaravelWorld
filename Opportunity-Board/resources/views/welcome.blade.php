@@ -34,8 +34,8 @@
                
                 
                 
-                <a href="{{route('apply', ['applyId' => $opportunity['id']]) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Apply</a>
-                <a href="{{ route('opportunityDetail', ['opportunity' => $opportunity['id']] ) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Details</a>
+                <a href="{{route('applications.apply', ['applyId' => $opportunity['id']]) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Apply</a>
+                <a href="{{ route('pages.opportunityDetail', ['opportunity' => $opportunity['id']] ) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full ">Details</a>
 
             </div>
             <p>published at {{ $opportunity['published_at'] }} by '{{$opportunity['created_by']}}'</p>

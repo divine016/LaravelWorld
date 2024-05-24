@@ -6,7 +6,7 @@
         <div class="w-full">
             <h1 class="text-4xl m-2">Create an <span>opportunity</span></h1>
             <div class="flex justify-center items-center">
-                <form method="POST" action="create" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('opportunities.create') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="flex items-start flex-col gap-5 capitalize ">
                         <div class="flex justify-center items-start flex-col gap-5">

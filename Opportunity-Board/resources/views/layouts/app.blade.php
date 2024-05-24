@@ -33,7 +33,7 @@
                     <!-- <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Product</a>
                     <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Features</a> -->
                     <a href="{{ route('pages.signUp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign Up</a>
-                    <a href="{{ route('signIn') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign In</a>
+                    <a href="{{ route('pages.signIn') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Sign In</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-1">
                     {{-- showing the profile if user is logged in --}}

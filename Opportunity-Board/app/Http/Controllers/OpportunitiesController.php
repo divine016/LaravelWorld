@@ -26,7 +26,7 @@ class OpportunitiesController extends Controller
             'title' => ['required', 'string'],
             'description' => ['required'],
             'category' => ['required'],
-            'photo' => ['required', 'mimes: jpeg, png, jpg'],
+            'photo' => ['required', 'mimes:jpeg,png,jpg'],
         ]);
 
         $filename = $request->file('photo')->getClientOriginalName();

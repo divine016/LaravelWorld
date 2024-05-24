@@ -43,7 +43,7 @@ class ApplicationController extends Controller
             'purpose' => ['required'],
             'link' => ['required'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'BigInterger'],
+            'phone' => ['required', 'size:9'],
 
         ]);
 

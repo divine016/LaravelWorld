@@ -33,13 +33,14 @@
                 </div>
                 <p>created at {{ $opportunity['created_at'] }} by '{{$opportunity['created_by']}}'</p>
                 <div class="flex gap-10">
-                    <form action="{{ route('publish', ['id' => $opportunity['id']]) }}" method="POST">
+                    <form action="{{ route('opportunities.publish', ['id' => $opportunity['id']]) }}" method="POST">
                         @csrf
                         <button type="submit" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
                             publish</button>
                     </form>
 
-                    <form method="POST" action="/delete/{{$opportunity->id}}">
+                    <!-- <form method="POST" action="/delete/{{$opportunity->id}}"> -->
+                    <form method="POST" action="{{ route('opportunities.deleteOpportunity', [$opportunity->id]) }}">
                         @csrf
                         @method('DELETE')
                         <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
@@ -48,7 +49,7 @@
                     </form>
                     <!--  -->
                     <!-- <button class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full">
-                        <a href="{{route('editOpportunity', ['opportunity' => $opportunity['id']]) }}">Edit</a>
+                        <a href="{{route('opportunities.editOpportunity', ['opportunity' => $opportunity['id']]) }}">Edit</a>
                     </button> -->
                     <!-- <button><a href="viewApplicants"></a>view applicants</button> -->
                  

@@ -7,7 +7,7 @@
             <h1 class="text-4xl m-2">Edit <span>opportunity</span></h1>
             <p>edit {{$opportunity->title}}</p>
             <div class="flex justify-center items-center">
-                <form method="POST" action="edit/{{$opportunity->id}}" enctype="multipart/form-data">
+                <form method="POST" action="route('opportunities.updateOpportunity')" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex items-start flex-col gap-5 capitalize ">

@@ -53,7 +53,7 @@
                                     profile
                                 </a></li>
                             <li class="">
-                                <form method="POST" action="/logout" class="inline-block">
+                                <form method="POST" action="{{ route('pages.logout') }}" class="inline-block">
                                     @csrf
                                     <button type="submit" class="flex text-sm gap-2 capitalize font-medium leading-6 text-gray-950 ring-0 active:bg-transparent focus:bg-transparent">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-indigo-700">

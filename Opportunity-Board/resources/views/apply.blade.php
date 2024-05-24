@@ -12,7 +12,7 @@
             <h1>Apply for opportunity {{$opp->title}}</h1>
             <p>here is the description{{$opp->description}}</p>
             <div class="flex justify-center items-center">
-                <form method="POST" action="{{ route('applyForOpp', ['id' => $opp->id]) }}">
+                <form method="POST" action="{{ route('applications.applyForOpp', ['id' => $opp->id]) }}">
                     @csrf 
                 
                 <!-- <label>why are you applying for this role?</label>

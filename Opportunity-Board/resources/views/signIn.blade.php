@@ -13,7 +13,7 @@
         <div class="w-full">
             <h1>Sign in to <span>Opportunity Board</span></h1>
             <div class="flex justify-center items-center">
-                <form method="POST" action="/users/authenticate">
+                <form method="POST" action="{{ route('pages.logIn') }}">
                     @csrf 
                     <div class="flex items-start flex-col gap-5 capitalize ">
 
