@@ -37,6 +37,9 @@ Route::controller(OpportunitiesController::class)
 
         Route::delete('/delete/{opportunity}', 'destroy')->name('deleteOpportunity');
 
+        Route::get('/opportunities/published', 'displayPublished')->name('publishdOpp');
+
+
     });
 
 Route::controller(ApplicationController::class)

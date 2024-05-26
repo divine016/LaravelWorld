@@ -56,6 +56,8 @@
                         <button type="submit" class="bg-indigo-300 border-none hover:border-2 hover:border-indigo-500 rounded-lg p-3 hover:rounded-full w-full mt-5">
                             Submit
                         </button>
+    <a href="{{route('pages.company')}}" class="text-black ml-4"> Back </a>
+
                     </div>
 
                 </form>

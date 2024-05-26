@@ -16,7 +16,7 @@
         <header class="absolute inset-x-0 top-0 z-50 border-b group">
             <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex lg:flex-1">
-                    <a href="/" class="-m-1.5 p-1.5">
+                    <a href="{{ route ('pages.company') }}" class="-m-1.5 p-1.5">
                         Opportunity Board
                     </a>
                 </div>
@@ -34,6 +34,7 @@
                     <a href="#" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Features</a> -->
                     <a href="{{ route('pages.welcome') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
                                 <a href="{{ route('pages.create') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
+                                <a href="{{ route('opportunities.publishdOpp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Published</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-1">
                     {{-- showing the profile if user is logged in --}}
@@ -91,6 +92,8 @@
             <div class="space-y-2 py-6">
             <a href="{{ route('pages.welcome') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
             <a href="{{ route('pages.create') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
+            <a href="{{ route('opportunities.publishdOpp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Published</a>
+
     </div>
     <div class="py-6">
         <form method="POST" action="/logout" class="inline-block">
@@ -131,6 +134,7 @@
                     <div class="space-y-2 py-6">
                         <a href="{{ route('pages.welcome') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Home</a>
                         <a href="{{ route('pages.create') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Create</a>
+                        <a href="{{ route('opportunities.publishdOpp') }}" class="text-base font-semibold leading-6 text-gray-900 group-hover:text-indigo-600 hover:bg-gray-200 px-4 py-2 rounded-md">Published</a>
                     </div>
                     <div class="py-6">
                         <form method="POST" action="/logout" class="inline-block">

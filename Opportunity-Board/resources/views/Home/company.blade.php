@@ -10,10 +10,12 @@
     <div class="flex my-20 gap-20 justify-between w-full items-center ">
         <form class="flex gap-3 mx-10" role="search">
             <input class="border-2 rounded-full p-3 " id="search" type="search" placeholder="&#x1F50D; Search..." aria-label="Search">
-            <!-- <button class="bg-indigo-500 px-3 rounded-lg" type="submit">Search</button> -->
+           
         </form>
 
-        <a href="{{ route('pages.create') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  type="submit">create</button></a>
+        <a href="{{ route('pages.create') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  >create</button></a>
+        <a href="{{ route('opportunities.publishdOpp') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  >Published</button></a>
+
     </div>
 
     <div>
