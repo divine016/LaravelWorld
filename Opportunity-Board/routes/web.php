@@ -39,7 +39,6 @@ Route::controller(OpportunitiesController::class)
 
         Route::get('/opportunities/published', 'displayPublished')->name('publishdOpp');
 
-
     });
 
 Route::controller(ApplicationController::class)
@@ -47,5 +46,6 @@ Route::controller(ApplicationController::class)
     ->group(function () {
         Route::get('apply/{applyId}', 'applyOpp')->name('apply');
         Route::post('application/{id}', 'applyForOpp')->name('applyForOpp');
+        Route::get('applicants/{id}', 'viewApplicants')->name('viewApplicants');
 
     });

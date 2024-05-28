@@ -12,38 +12,41 @@
             <input class="border-2 rounded-full p-3 " id="search" type="search" placeholder="&#x1F50D; Search..." aria-label="Search">
         </form>
 
-        <a href="{{ route('pages.create') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  type="submit">create</button></a>
-        <a href="{{ route('opportunities.publishdOpp') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]">  <button  >Published</button></a>
+        <a href="{{ route('pages.create') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]"> <button type="submit">create</button></a>
+        <a href="{{ route('opportunities.publishdOpp') }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]"> <button>Published</button></a>
     </div>
 
     <div>
         <h1 class="text-center text-4xl"> Published Opportunities</h1>
         <div class="flex gap-5">
-            @foreach($publishedOpportunities as $publishedOpportunity)
+        @foreach($publishedOpportunities as $publishedOpportunity)
             <div class="card" style="width: 18rem;">
-                <!-- <img src="..." class="card-img-top" alt="..."> -->
-                <div class="card-body">
-                    <img src="{{ $publishedOpportunity['photo'] }}" alt="image here" height="200" width="200" />
+
+            <div class="card-body">
                     <h5 class="card-title">
                         <p>{{ $publishedOpportunity['title'] }}</p>
                     </h5>
                     <p class="card-text">{{ $publishedOpportunity['description'] }}</p>
+                    <p class="card-text">{{ $publishedOpportunity['category'] }}</p>
 
                 </div>
                 <p>created at {{ $publishedOpportunity['created_at'] }} by '{{$publishedOpportunity['created_by']}}'</p>
-                
-                        <p class="text-indigo-400 p-3 bg-slate-300">
-                            published</p>
-                  
 
-                </div>
+                <p class="text-indigo-400 p-3 bg-slate-300">
+                    published</p>
+                <a href="{{ route('applications.viewApplicants', [$publishedOpportunity->id] ) }}" class="bg-indigo-400 border-none hover:border-2 hover:bg-indigo-500 rounded-lg p-3 hover:rounded-full w-[30%]"> <button>see Applicants</button></a>
+
 
 
             </div>
 
-        </div>
-        @endforeach
+
+    @endforeach
+
     </div>
+
+</div>
+</div>
 
 </div>
 <a href="{{route('pages.company')}}" class="text-black ml-4"> Back </a>

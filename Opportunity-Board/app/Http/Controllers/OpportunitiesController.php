@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
 
 class OpportunitiesController extends Controller
 {
@@ -149,21 +148,18 @@ class OpportunitiesController extends Controller
         return redirect()->route('pages.company')->with('message', 'opportunity deleted successfully');
     }
 
-    public function displayPublished(): RedirectResponse
+    public function displayPublished(): view
     {
         $user = auth()->user();
-        if($user) {
+        if ($user) {
             $currentUser = $user->name;
             $publishedOpportunities = Opportunity::where('created_by', $currentUser)->whereNotNull('published_at')->get();
 
             return view('opp.published', compact('publishedOpportunities'));
 
-            
-        } else{
+        } else {
             abort(403, 'Unauthorized Action cannot access this page');
         }
 
-
-        
     }
 }

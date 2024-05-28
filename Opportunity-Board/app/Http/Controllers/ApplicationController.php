@@ -76,4 +76,15 @@ class ApplicationController extends Controller
 
         return redirect()->route(auth()->user() ? 'pages.individual' : 'pages.welcome')->with('Applied for opportunity  successfully');
     }
+
+    public function viewApplicants(Opportunity $opportunity, $id): View
+    {
+        $opp = Opportunity::find($id);
+        // dd($opp);
+        $applicants = Application::where('opportunity_id', $id)->get();
+
+        // dd($applicants);
+        return view('opp.applicants', ['applicants' => $applicants], ['opp' => $opp]);
+
+    }
 }

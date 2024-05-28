@@ -23,13 +23,14 @@
         <div class="flex gap-5">
             @foreach($opportunities as $opportunity)
             <div class="card" style="width: 18rem;">
-                <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
                     <img src="{{ $opportunity['photo'] }}" alt="image here" height="200" width="200" />
                     <h5 class="card-title">
                         <p>{{ $opportunity['title'] }}</p>
                     </h5>
                     <p class="card-text">{{ $opportunity['description'] }}</p>
+                    <p class="card-text">{{ $opportunity['category'] }}</p>
+
 
                 </div>
                 <p>created at {{ $opportunity['created_at'] }} by '{{$opportunity['created_by']}}'</p>

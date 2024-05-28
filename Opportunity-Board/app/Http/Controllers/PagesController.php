@@ -67,7 +67,7 @@ class PagesController extends Controller
     {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'phone' => ['required', 'interger'],
+            'phone' => ['required', 'string'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'user_type' => ['required'],
@@ -154,7 +154,7 @@ class PagesController extends Controller
      *
      * returns a redirectResponse
      */
-    public function company(): View | RedirectResponse
+    public function company(): View|RedirectResponse
     {
         $user = auth()->user();
         if ($user) {
@@ -176,7 +176,7 @@ class PagesController extends Controller
      *
      * returns a redirectResponse
      */
-    public function individual(): RedirectResponse | View
+    public function individual(): RedirectResponse|View
     {
         $user = auth()->user();
         if ($user) {
