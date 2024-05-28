@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class OpportunitiesController extends Controller
 {
@@ -22,26 +23,33 @@ class OpportunitiesController extends Controller
     public function createOpp(Request $request): RedirectResponse
     {
 
-        $data = $request->validate([
-            'title' => ['required', 'string'],
-            'description' => ['required'],
-            'category' => ['required'],
-            'photo' => ['required', 'mimes:jpeg,png,jpg'],
-        ]);
+        try {
+            $data = $request->validate([
+                'title' => ['required', 'string'],
+                'description' => ['required'],
+                'category' => ['required'],
+                'photo' => ['required', 'mimes:jpeg,png,jpg'],
+            ]);
 
-        $filename = $request->file('photo')->getClientOriginalName();
-        $path = $request->file('photo')->storeAs('images', $filename, 'public');
-        $data['photo'] = '/storage/'.$path;
+            $filename = $request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('images', $filename, 'public');
+            $data['photo'] = '/storage/'.$path;
 
-        $opp = new Opportunity;
-        $opp->title = $data['title'];
-        $opp->description = $data['description'];
-        $opp->category = $data['category'];
-        $opp->created_by = auth()->user()->name;
-        $opp->photo = $data['photo'];
-        $opp->save();
+            $opp = new Opportunity;
+            $opp->title = $data['title'];
+            $opp->description = $data['description'];
+            $opp->category = $data['category'];
+            $opp->created_by = auth()->user()->name;
+            $opp->photo = $data['photo'];
+            $opp->save();
 
-        return redirect()->route('pages.company')->with('success opportunity create successfully');
+            return redirect()->route('pages.company')->with('success opportunity create successfully');
+        } catch (Throwable $e) {
+            report($e);
+
+            return redirect()->back()->with('error opportunity create failed');
+        }
+
     }
 
     /**
@@ -66,8 +74,12 @@ class OpportunitiesController extends Controller
                     'opportunity' => $opp,
                     'individual' => $individual,
                 ];
+                try {
+                    Mail::to($individual->email)->send(new OpportunityAlert($mailData));
+                } catch (Throwable $e) {
+                    report($e);
+                }
 
-                Mail::to($individual->email)->send(new OpportunityAlert($mailData));
             }
         }
 
@@ -115,15 +127,21 @@ class OpportunitiesController extends Controller
             // Use the existing image from the opportunity
             $formFields['photo'] = $opportunity->photo;
         }
+        try {
+            $opportunity->title = $formFields['title'];
+            $opportunity->description = $formFields['description'];
+            $opportunity->category = $formFields['category'];
+            $opportunity->photo = $formFields['photo'];
 
-        $opportunity->title = $formFields['title'];
-        $opportunity->description = $formFields['description'];
-        $opportunity->category = $formFields['category'];
-        $opportunity->photo = $formFields['photo'];
+            $opportunity->save();
 
-        $opportunity->save();
+            return redirect()->route('pages.company')->with('message', 'opportunity updated successfully');
 
-        return redirect()->route('pages.company')->with('message', 'opportunity updated successfully');
+        } catch (Throwable $e) {
+            report($e);
+
+            return redirect()->back()->with('error opportunity update failed');
+        }
 
     }
 

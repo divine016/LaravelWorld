@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class ApplicationController extends Controller
 {
@@ -68,8 +69,12 @@ class ApplicationController extends Controller
                     'opportunity' => $application,
                     'individual' => $company,
                 ];
+                try {
+                    Mail::to($company->email)->send(new ApplicationAlert($mailData));
 
-                Mail::to($company->email)->send(new ApplicationAlert($mailData));
+                } catch (Throwable $e) {
+                    report($e);
+                }
 
             }
         }
@@ -77,13 +82,18 @@ class ApplicationController extends Controller
         return redirect()->route(auth()->user() ? 'pages.individual' : 'pages.welcome')->with('Applied for opportunity  successfully');
     }
 
-    public function viewApplicants(Opportunity $opportunity, $id): View
+    /**
+     * viewing applicants who applied for a specific opportunity
+     *
+     * @param  int  $id
+     *
+     * returns a view
+     */
+    public function viewApplicants($id): View
     {
         $opp = Opportunity::find($id);
-        // dd($opp);
         $applicants = Application::where('opportunity_id', $id)->get();
 
-        // dd($applicants);
         return view('opp.applicants', ['applicants' => $applicants], ['opp' => $opp]);
 
     }

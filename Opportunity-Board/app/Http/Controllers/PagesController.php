@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Throwable;
 
 class PagesController extends Controller
 {
@@ -79,22 +80,36 @@ class PagesController extends Controller
 
         //create user
         if ($request->user_type === 'company') {
-            $user = User::create($formFields);
+            try {
+                $user = User::create($formFields);
 
-            //login user
-            auth()->login($user);
+                //login user
+                auth()->login($user);
 
-            //redirect to a specific dashbord user
-            return redirect()->route('pages.company')->with('welcome to your company dashboard');
+                //redirect to a specific dashbord user
+                return redirect()->route('pages.company')->with('welcome to your company dashboard');
+            } catch (Throwable $e) {
+                report($e);
+
+                return redirect()->back()->with('error', 'user creation failed');
+            }
+
         } else {
-            $formFields['category'] = $request->category;
-            $user = User::create($formFields);
+            try {
+                $formFields['category'] = $request->category;
+                $user = User::create($formFields);
 
-            //login user
-            auth()->login($user);
+                //login user
+                auth()->login($user);
 
-            //redirect to a specific dashbord user
-            return redirect()->route('pages.individual')->with('welcome to your individual dashboard');
+                //redirect to a specific dashbord user
+                return redirect()->route('pages.individual')->with('welcome to your individual dashboard');
+            } catch (Throwable $e) {
+                report($e);
+
+                return redirect()->back()->with('error', 'user creation failed');
+            }
+
         }
 
         return 'we could not log you in. veryfy credentials and try again';
